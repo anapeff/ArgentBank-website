@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logoImage from '../../images/argentBankLogo.png';
 
-const Navbar = () => {
+
+const Header = () => {
   return (
     <nav className="main-nav">
       <Link className="main-nav-logo" to="/">
@@ -23,4 +24,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
