@@ -1,6 +1,7 @@
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import ProfileAccount from '../../components/ProfileAccount/ProfileAccount';
+import EditProfile from '../../components/EditProfil/EditProfil';
 
 function User() {
   return (
@@ -9,7 +10,7 @@ function User() {
       <Header />
     </header>
     <main className="bg-dark">
-    
+    <EditProfile />
       <h2 className="sr-only">Accounts</h2>
       <div className="group-accounts">
         <ProfileAccount title="Argent Bank Checking (x8349)" amount="$2,082.79" description="Available Balance" />
