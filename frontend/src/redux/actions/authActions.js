@@ -1,5 +1,3 @@
-// Authentification - Actions //
-
 // Action pour gérer la connexion de l'utilisateur //
 export const userLogin = (userData) => {
   return {
@@ -20,6 +18,7 @@ export const setLoggedIn = (isLoggedIn) => {
 export const userLogout = () => {
   localStorage.removeItem('token');
   sessionStorage.removeItem('token');
+
   return {
     type: 'LOGOUT',
   };

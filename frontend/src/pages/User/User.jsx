@@ -1,14 +1,13 @@
+import React from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import ProfileAccount from '../../components/ProfileAccount/ProfileAccount';
-import EditProfile from '../../components/EditProfil/EditProfil';
+import EditProfile from '../../components/EditProfile/EditProfile';
 
 function User() {
   return (
     <div>
-    <header>
-      <Header />
-    </header>
+    <Header />
     <main className="bg-dark">
     <EditProfile />
       <h2 className="sr-only">Accounts</h2>
@@ -18,9 +17,8 @@ function User() {
         <ProfileAccount title="Argent Bank Credit Card (x8349)" amount="$184.30" description="Current Balance" />
       </div>
     </main>
-    <footer>
       <Footer />
-    </footer>
+   
   </div>
 );
 }

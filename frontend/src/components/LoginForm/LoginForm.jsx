@@ -18,6 +18,7 @@ const LoginForm = () => {
         email: email,
         password: password,
         rememberMe: rememberMe,
+
       };
   
       try {
@@ -32,11 +33,16 @@ const LoginForm = () => {
         if (response.ok) {
           const responseData = await response.json();
           const token = responseData.body.token;
-          if (rememberMe) {
-            localStorage.setItem('token', token);
-          } else {
-            sessionStorage.setItem('token', token);
-          }
+  
+          localStorage.setItem('token', token);
+      // Stocker l'email et le mot de passe si "Remember Me" est coché
+        if (rememberMe) {
+          localStorage.setItem('email', email);
+          localStorage.setItem('password', password);
+      } else {
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+    }
           navigate('/user');
           dispatch(userLogin({ token }));
         } else if (response.status === 400) {

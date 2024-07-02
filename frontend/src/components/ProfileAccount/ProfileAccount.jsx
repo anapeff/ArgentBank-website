@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const ProfileAccount = ({ title, amount, description }) => {
   return (
     <div className="account">

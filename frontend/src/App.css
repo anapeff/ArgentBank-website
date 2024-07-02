@@ -54,8 +54,8 @@ body {
 
 .main-nav-item {
   text-decoration: none;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+  text-decoration: none;
+  margin-right: 1.5rem;
 }
 
 .main-nav-item:hover {
@@ -71,7 +71,24 @@ body {
   max-width: 100%;
   width: 200px;
 }
+.fa {
+  font-size: 25px;
+  margin-right: 10px;
+}
 
+.main-nav-item-logout {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  border-color: #00bc77;
+  background-color: #00bc77;
+}
+
+.main-nav div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
 .hero {
   background-image: url('../src/images/bank-tree.jpeg');
   background-position: 0 -50px;
@@ -290,4 +307,52 @@ body {
   .transaction-button {
     width: 200px;
   }
+}
+
+
+
+
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  margin: 20px;
+}
+  
+.edit-form label {
+  margin-right : 10px;
+  color: white;
+  font-weight: bold;
+}
+  
+input {
+  padding: 5px;
+
+  &:read-only {
+    opacity: 0.5;
+  }
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 103%;
+  gap: 5px;
+}
+
+.welcome-user {
+  color: white;
+  padding-top: 20px ;
+  margin: 0;
 }

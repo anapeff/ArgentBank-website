@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import logoImage from '../../images/argentBankLogo.png';
 import { userLogout, setLoggedIn } from '../../redux/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux'; 
+import { fetchUserProfile } from '../../redux/actions/profileActions';
 
 const Header = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const userProfile = useSelector((state) => state.profile.userProfile); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,6 +21,7 @@ const Header = () => {
     
     if (tokenLocal || tokenSession) {
       dispatch(setLoggedIn());
+      dispatch(fetchUserProfile());
     }
   }, [dispatch]);
 
@@ -33,8 +36,9 @@ const Header = () => {
           <>
             <Link to='/user' className='main-nav-item'>
               <i className='fa fa-user-circle'></i>
-          
+              {userProfile.userName} 
             </Link>
+          
             <button className='main-nav-item-logout' onClick={handleLogout}>
               <i className='fa fa-sign-out'></i>
               Logout
