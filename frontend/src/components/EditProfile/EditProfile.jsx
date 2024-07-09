@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUserName, fetchUserProfile } from '../../redux/actions/profileActions';
-
+import { updateUserName, fetchUserProfile } from '../../redux/slices/profileSlice';
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -9,27 +8,28 @@ const EditProfile = () => {
   const [newUserName, setNewUserName] = useState('');
   const [isEditing, setIsEditing] = useState(false);
 
+  
   useEffect(() => {
-    const tokenLocal = localStorage.getItem('token');
-    const tokenSession = sessionStorage.getItem('token');
-    
-    if (tokenLocal || tokenSession) {
+    if (localStorage.getItem('token') || sessionStorage.getItem('token')) {
       dispatch(fetchUserProfile());
     }
   }, [dispatch]);
 
+  // Passer en mode édition
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
-  const handleUpdateUserName = async () => {
+  // Mettre à jour le nom d'utilisateur
+  const handleUpdateUserName = () => {
     if (newUserName) {
       dispatch(updateUserName(newUserName));
-      setIsEditing(false);
       setNewUserName('');
+      setIsEditing(false);
     }
   };
 
+  // Annuler l'édition
   const handleCancel = () => {
     setIsEditing(false);
   };
@@ -38,19 +38,19 @@ const EditProfile = () => {
     <div className="edit-form">
       {isEditing ? (
         <>
-          <h1 className='welcome-user'>Edit User Infos</h1>
+          <h1 className='welcome-user'>Edit user info</h1>
           <div className='edit'>
-            <label htmlFor="newUserName">User Name :</label>
+            <label htmlFor="newUserName">User name</label>
             <input
               type="text"
               id="newUserName"
-              placeholder= {userProfile.userName}
+              placeholder={userProfile.userName}
               value={newUserName}
               onChange={(e) => setNewUserName(e.target.value)}
             />
           </div>
           <div className='edit'>
-            <label htmlFor="firstName">First Name :</label>
+            <label htmlFor="firstName">First name</label>
             <input
               type="text"
               id="firstName"
@@ -60,7 +60,7 @@ const EditProfile = () => {
             />
           </div>
           <div className='edit'>
-            <label htmlFor="lastName">Last Name :</label>
+            <label htmlFor="lastName">Last name</label>
             <input
               type="text"
               id="lastName"
@@ -76,8 +76,8 @@ const EditProfile = () => {
         </>
       ) : (
         <div>
-          <h1 className='welcome-user'>Welcome back {userProfile.userName} !</h1>
-          <button className="edit-button" onClick={handleEditClick}>Edit Name</button>
+          <h1 className='welcome-user'>Welcome {userProfile.userName} !</h1>
+          <button className="edit-button" onClick={handleEditClick}>Edit</button>
         </div>
       )}
     </div>
@@ -85,3 +85,4 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+

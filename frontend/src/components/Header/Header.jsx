@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logoImage from '../../images/argentBankLogo.png';
-import { userLogout, setLoggedIn } from '../../redux/actions/authActions';
+import logoImage from '../../images/argentBankLogo.webp';
 import { useDispatch, useSelector } from 'react-redux'; 
-import { fetchUserProfile } from '../../redux/actions/profileActions';
+import { setLoggedIn, userLogout } from '../../redux/slices/authSlice'; 
+import { fetchUserProfile, resetUserProfile } from '../../redux/slices/profileSlice'; 
 
 const Header = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -13,14 +13,14 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(userLogout());
-    navigate ('/sign-in');
+    dispatch(resetUserProfile());
+    navigate('/sign-in');
   };
+
   useEffect(() => {
-    const tokenLocal = localStorage.getItem('token');
-    const tokenSession = sessionStorage.getItem('token');
-    
-    if (tokenLocal || tokenSession) {
-      dispatch(setLoggedIn());
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    if (token) {
+      dispatch(setLoggedIn(true)); 
       dispatch(fetchUserProfile());
     }
   }, [dispatch]);
@@ -36,12 +36,10 @@ const Header = () => {
           <>
             <Link to='/user' className='main-nav-item'>
               <i className='fa fa-user-circle'></i>
-              {userProfile.userName} 
+              {userProfile.userName}
             </Link>
-          
-            <button className='main-nav-item-logout' onClick={handleLogout}>
-              <i className='fa fa-sign-out'></i>
-              Logout
+            <button className='main-nav-item main-nav-item-logout' onClick={handleLogout}>
+            Logout
             </button>
           </>
         ) : (

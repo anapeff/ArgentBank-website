@@ -1,4 +1,3 @@
-
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,28 +11,37 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  
 }
 
 .main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .bg-dark {
   background-color: #12002b;
+  width: 100%;
+  padding-top: 50px; /* Add padding to the top */
+  padding-bottom: 50px; /* Add padding to the bottom */
+
 }
 
 .sr-only {
   border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  clip: rect(1px, 1px, 1px, 1px) !important; 
   -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important; /* 2 */
+  clip-path: inset(50%) !important; 
   height: 1px !important;
   margin: -1px !important;
   overflow: hidden !important;
   padding: 0 !important;
   position: absolute !important;
   width: 1px !important;
-  white-space: nowrap !important; /* 3 */
+  white-space: nowrap !important; 
 }
 
 .main-nav {
@@ -54,8 +62,8 @@ body {
 
 .main-nav-item {
   text-decoration: none;
-  text-decoration: none;
-  margin-right: 1.5rem;
+ 
+  
 }
 
 .main-nav-item:hover {
@@ -71,8 +79,9 @@ body {
   max-width: 100%;
   width: 200px;
 }
+
 .fa {
-  font-size: 25px;
+  font-size: 18px;
   margin-right: 10px;
 }
 
@@ -80,8 +89,12 @@ body {
   display: flex;
   align-items: center;
   font-size: 15px;
-  border-color: #00bc77;
-  background-color: #00bc77;
+  color: #42b983;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  padding-left: 20px;
 }
 
 .main-nav div {
@@ -90,7 +103,7 @@ body {
   flex-direction: row;
 }
 .hero {
-  background-image: url('../src/images/bank-tree.jpeg');
+  background-image: url('../src/images/bank-tree.webp');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -189,8 +202,9 @@ body {
   background-color: white;
   width: 300px;
   margin: 0 auto;
-  margin-top: 3rem;
   padding: 2rem;
+
+ 
 }
 
 .sign-in-icon {
@@ -232,7 +246,12 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.group-accounts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+ 
+}
 .account {
   display: flex;
   justify-content: space-between;
@@ -245,13 +264,18 @@ body {
   padding: 1.5rem;
   box-sizing: border-box;
   text-align: left;
-  margin-bottom: 2rem;
+  margin-bottom: 25px;
+
+ 
+ 
 }
 
 .account-amount {
   margin: 0;
   font-size: 2.5rem;
   font-weight: bold;
+ 
+
 }
 
 .account-amount-description {
@@ -291,6 +315,7 @@ body {
   font-weight: bold;
   margin-top: 1rem;
   border-color: #00bc77;
+  cursor: pointer;
   background-color: #00bc77;
   color: #fff;
 }
@@ -355,4 +380,4 @@ input {
   color: white;
   padding-top: 20px ;
   margin: 0;
-}
+} 
