@@ -32,14 +32,14 @@ const profileSlice = createSlice({
         email: ''
       };
     },
-    updateUserNameInState(state, action) {
+    setUserName(state, action) {
       state.userProfile.userName = action.payload;
       state.error = null;
     }
   }
 });
 
-export const { setUserProfile, setError, resetUserProfile, updateUserNameInState } = profileSlice.actions;
+export const { setUserProfile, setError, resetUserProfile, setUserName } = profileSlice.actions;
 
 // Action pour récupérer le profil utilisateur
 export const fetchUserProfile = () => async dispatch => {
@@ -91,7 +91,7 @@ export const updateUserName = (userName) => async (dispatch, getState) => {
       throw new Error('Failed to update user name');
     }
 
-    dispatch(updateUserNameInState(userName));
+    dispatch(setUserName(userName));
   } catch (error) {
     dispatch(setError(error.message));
   }
